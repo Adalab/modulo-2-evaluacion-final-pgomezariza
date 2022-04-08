@@ -8,12 +8,36 @@
   <title>Buscador Cócteles By Paula G.A</title>
 </head>
 <body>
-  <div class="cocktails">
-    <h2 class="title">Buscador Cócteles</h2>
-    <ul class="cocktails__list">
+  <main class="main">
+    <section class="section1">
+      <h1>Buscador Cócteles</h1>
+      <form>
+        <input type="text" name="cócktail" class="input" placeholder="Buscar Cocktail"/>
+        <button type="button" class="searchBtn">
+          Buscar
+        </button>
+        <button type="button" class="resetBtn">
+          Reset
+        </button>
+      </form>
 
-    </ul>
-  </div>
+    </section>
+    <section class="section2">
+      <div class="favsCockt">
+        <h2 class="favTitle">Cócteles Favoritos</h2>
+        <ul class="favList">
+          <li class="favCocktail">
+            <h3>Nombre Cocktail</h3>
+          </li>
+        </ul>
+      </div>
+      <div class="list">
+        <h2 class="listTitle">Lista</h2>
+        <ul class="cocktailList">
+        </ul>
+      </div>
+    </section>
+  </main>
   <script src="./assets/js/main.js"></script>
 </body>
 </html>
