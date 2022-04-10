@@ -15,7 +15,12 @@ let cockList = [];
 function handleInput(event){
   event.preventDefault();
   const searchDrinks = inputSearch.value.toLowerCase();
-  callFetch(searchDrinks);
+  if(searchDrinks !== ""){
+    callFetch(searchDrinks);
+  } else {
+    cockList = [];
+    paintCocktail();
+  }
 }
 
 searchBtn.addEventListener('click', handleInput);
@@ -49,7 +54,7 @@ function paintCocktail() {
   //classFavorite -> añade la clase de favorito en caso de que corresponda
   html += `<li class="drink js-drink ${classFavorite}>" id=${drink.idDrink}>`;
   html += `<h3 class="nameDrink js-nameDrink"> ${drink.strDrink}</h3>`;
-  html += `<img class="imgDrink js-imgDrink" src="${drink.strDrinkThumb}" alt="Cocktail" />`;
+  html += `<img width="500" class="imgDrink js-imgDrink" src="${drink.strDrinkThumb}" alt="Cocktail" />`;
   html += `</li>`
   }
 //Añado el codigo htmñ creado a la página
@@ -104,6 +109,7 @@ function handleClicCocktail(event) {
   
   //j. Esta es la funcion que pinta en favoritos segun el array
   function paintFavorites() {
+    console.log('favorites')
     let html = '';
     for (const drink of favorites) {
       let classFavorite = ''; 
@@ -117,7 +123,7 @@ function handleClicCocktail(event) {
     }
     html += `<li class=" drink js-favDrink ${classFavorite}>" id=${drink.idDrink}>`;
     html += `<h3 class="favNameDrink js-favNameDrink"> ${drink.strDrink}</h3>`;
-    html += `<img class="imgDrink js-imgDrink js-favImgDrink" src="${drink.strDrinkThumb}" alt="Cocktail" />`;
+    html += `<img width="500" class="imgDrink js-imgDrink js-favImgDrink" src="${drink.strDrinkThumb}" alt="Cocktail" />`;
     html += `</li>`;
     }
     favList.innerHTML = html;
