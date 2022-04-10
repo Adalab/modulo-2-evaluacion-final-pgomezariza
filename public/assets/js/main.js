@@ -107,6 +107,25 @@ function handleClicCocktail(event) {
   //9. Para que cambie las clases; cuando paint va a pintar primero pregunta si es un favorito y entonces le añade la clase o no (retrocede al punto 6)
   paintCocktail();
 
-  //10. Esta es la función 
+  //10. Esta es la funcion que pinta en favoritos segun el array
+  function paintFavorites() {
+    let html = '';
+    for (const drink of favorites) {
+      let let classFavorite = ""; 
+      const favoriteFoundIndex = favorites.findIndex((fav) => { 
+        return fav.idDrink === drink.idDrink;
+    });
+    if(favoriteFoundIndex !== -1){
+      classFavorite = "cocktail--favorite";
+    } else {
+      classFavorite = "";
+    }
+    html += `<li class=" drink js-favDrink ${classFavorite}>" id=${drink.idDrink}>`;
+    html += `<h3 class="favNameDrink js-favNameDrink"> ${drink.strDrink}</h3>`;
+    html += `<img class="imgDrink js-imgDrink js-favImgDrink" src="${drink.strDrinkThumb}" alt="Cocktail" />`;
+    html += `</li>`
+    }
+    favCocktailList.innerHTML = html;
+  }
 
 //# sourceMappingURL=main.js.map
