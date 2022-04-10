@@ -31,8 +31,19 @@ function callFetch(searchDrinks) {
     .then(response => response.json())
     .then(data => {
     cockList = data.drinks;
+    drinkThumbPlaceholder();
     paintCocktail();
     });
+}
+
+//** Nueva función para el relleno de imagen en caso de que en la API me falte alguna
+
+function drinkThumbPlaceholder(){
+  for (const drink of cockList) {
+    if(drink.strDrinkThumb === ''){
+      drink.strDrinkThumb = "https://via.placeholder.com/210x295/ffffff/666666/?text=Cocktail"
+    }
+  }
 }
 
 //f. Tengo que crear la función para pintar/renderizar el cocktail q me refería en el punto 5, una vez que he obtenido los datos
