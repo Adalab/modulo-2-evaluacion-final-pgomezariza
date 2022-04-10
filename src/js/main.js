@@ -109,7 +109,6 @@ function handleClicCocktail(event) {
   
   //j. Esta es la funcion que pinta en favoritos segun el array
   function paintFavorites() {
-    console.log('favorites')
     let html = '';
     for (const drink of favorites) {
       let classFavorite = ''; 
@@ -131,3 +130,17 @@ function handleClicCocktail(event) {
 
  //**.  Obtenermos lo que hay en el Local Storage
  const listCocktailStorage = JSON.parse(localStorage.getItem('listCocktailStorage'));
+
+ //k. Para resetear toda la página 
+ // Variables asociadas al botón reset
+ const resetBtn = document.querySelector('.js-resetBtn');
+
+ // Función manejadora de reset
+function handleClickButtonReset(event) {
+  event.preventDefault();
+  favorites.splice(0, favorites.length);
+  paintCocktail();
+}
+
+ // Evento reset haciendo click en el botón reset
+resetBtn.addEventListener('click', handleClickButtonReset);
