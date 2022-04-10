@@ -1,34 +1,26 @@
 'use strict';
 
-//01. Obtener los datos de HTML con los que voy a trabajar (ul, input usuaria)
-//02. Pintar los datos según el input de la usuaria
-//03. Agregar a favoritos y quitar de favoritos
-//04. Mover de la "Lista" -> a la columna de "Cócteles Favoritos"
-//05. Almacenamiento local (Local Storage)
-
-
- //**.  Obtenermos lo que hay en el Local Storage
- const listCocktailStorage = JSON.parse(localStorage.getItem('listCocktailStorage'));
-
-//1. Llevo a JS el ul para pintar los cocktails y lista 
+//a. Llevo a JS el ul para pintar los cocktails y lista 
 const cocktailList = document.querySelector(".js-cocktailList");
 const favList = document.querySelector(".js-favList")
 
-//2. Llevo a JS el input para escuhar lo que busca la usuaria 
+//b. Llevo a JS el input para escuhar lo que busca la usuaria 
 const inputSearch = document. querySelector(".js-input");
+const searchBtn = document.querySelector(".js-searchBtn");
 
-//3. Necesito salvar/guardar los cocktails. Pero las tengo que guardar en una variable ("cockList = data.drinks ") para acceder en todo mi código. Va a estar vacio en inicio y tendrá valor cuando yo haga FETCH.
+//c. Necesito salvar/guardar los cocktails. Pero las tengo que guardar en una variable ("cockList = data.drinks ") para acceder en todo mi código. Va a estar vacio en inicio y tendrá valor cuando yo haga FETCH.
 let cockList = [];
 
-//4. Creo una función (función manejadora) que escuche al input y lo FILTRE en FETCH
+//d. Creo una función (función manejadora) que escuche al input y lo FILTRE en FETCH
 function handleInput(event){
   event.preventDefault();
   const searchDrinks = inputSearch.value.toLowerCase();
   callFetch(searchDrinks);
 }
-inputSearch.addEventListener('keyup', handleInput);
 
-//5. Obtener los datos del servidor con fetch (creando la función callFetch) y que los pinte (aun no me lo puede pintar xq me falta la función para pintar el cocktail)
+searchBtn.addEventListener('click', handleInput);
+
+//e. Obtener los datos del servidor con fetch (creando la función callFetch) y que los pinte (aun no me lo puede pintar xq me falta la función para pintar el cocktail)
 function callFetch(searchDrinks) {
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${searchDrinks}`)
     .then(response => response.json())
@@ -38,7 +30,7 @@ function callFetch(searchDrinks) {
     });
 }
 
-//6. Tengo que crear la función para pintar/renderizar el cocktail q me refería en el punto 5, una vez que he obtenido los datos
+//f. Tengo que crear la función para pintar/renderizar el cocktail q me refería en el punto 5, una vez que he obtenido los datos
 function paintCocktail() {
   let html = '';
   for (const drink of cockList) {
@@ -68,7 +60,7 @@ paintFavorites();
 }
 
 
-//7. Escuchar cuando se clica en el cocktail
+//g. Escuchar cuando se clica en el cocktail
 function listenerCocktails() {
   const liCocktail = document.querySelectorAll('.js-drink');
   for (const drink of liCocktail) {
@@ -76,7 +68,7 @@ function listenerCocktails() {
   }
 }
 
-//8. Crear listado (array) de los cócteles favortios
+//h. Crear listado (array) de los cócteles favortios
 let favorites =[]; 
 
 //Escuchar el click y obtener el cocktail sacando el valor del id
@@ -106,11 +98,11 @@ function handleClicCocktail(event) {
     //eliminar de la lista de favoritos
     favorites.splice(favoriteFoundIndex,1); 
   }
-  //9. Para que cambie las clases; cuando paint va a pintar primero pregunta si es un favorito y entonces le añade la clase o no (retrocede al punto 6)
+  //i. Para que cambie las clases; cuando paint va a pintar primero pregunta si es un favorito y entonces le añade la clase o no (retrocede al punto 6)
   paintCocktail();
 }
   
-  //10. Esta es la funcion que pinta en favoritos segun el array
+  //j. Esta es la funcion que pinta en favoritos segun el array
   function paintFavorites() {
     let html = '';
     for (const drink of favorites) {
@@ -131,6 +123,7 @@ function handleClicCocktail(event) {
     favList.innerHTML = html;
   }
 
- 
+ //**.  Obtenermos lo que hay en el Local Storage
+ const listCocktailStorage = JSON.parse(localStorage.getItem('listCocktailStorage'));
 
 //# sourceMappingURL=main.js.map
