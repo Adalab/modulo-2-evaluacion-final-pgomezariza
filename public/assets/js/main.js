@@ -55,7 +55,22 @@ function paintCocktail() {
   html += `<h3 class="nameDrink js-nameDrink"> ${drink.strDrink}</h3>`;
   html += `<img class="imgDrink js-imgDrink" src="${drink.strDrinkThumb}" alt="Cocktail" />`;
   html += `</li>`
-}};
+  }
+//Añado el codigo htmñ creado a la página
 cocktailList.innerHTML = html;
+//Después de modificar el html escucho de nuevo los eventos 
+listenerCocktails();
+paintFavorites(); //tengo la funcion unas lineas mas abajo en el punto 10 en la funcion que pinta en favoritos segun el array
+}
 
+
+//7. Escuchar cuando se clica en el cocktail
+function listenerCocktails () {
+  const liDrink = document.querySelector ('.js-drink');
+  for (const drink of liDrink) {
+    drink.addEventListener('click', handleClickCocktail);
+  }
+}
+
+//8. 
 //# sourceMappingURL=main.js.map
