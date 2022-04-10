@@ -31,6 +31,7 @@ function callFetch(searchDrinks) {
   .then(response => response.json())
   .then(data => {
   cockList = data.drinks;
+  paintCocktail();
   });
 }
 
@@ -72,4 +73,38 @@ function listenerCocktails () {
   }
 }
 
-//8. 
+//8. Crear listado (array) de los cócteles favortios
+let favorites =[]; 
+
+//Escuchar el click y obtener el cocktail sacando el valor del id
+function handleClicCocktail(event) {
+  const idDrinkSelected = event.currentTarget.id;
+
+  //existe en el listado de favoritos: (map, push, filter, find, findIndex, splice)
+  //find: buscar el elemento en el listado, devuelto el elemento
+  //findIndex: buscar la posición en el listado, devuelve la posición donde está, pero si me devuelve -1
+  //splice: elimina un elemento de un listado dado el posición de donde esta , segundo parametro cuantos quiere eliminar
+
+  //Busca un cocktail en la array de todas las bebidas
+  const drinkFound = cockList.find(fav=>{
+    return fav.idDrink === idDrinkSelected;
+  });
+
+  //compruebo si el cocktail que recibo está en favoritos
+  const favoriteFoundIndex = favorites.findIndex(fav=>{
+    return fav.idDrink === idDrinkSelected;
+  });
+
+  //Si es -1 es que no lo encontró porque no está
+  if(favoriteFoundIndex === -1){
+    favorites.push(drinkFound);
+  }
+  else {
+    //eliminar de la lista de favoritos
+    favorites.splice(favoriteFoundIndex,1); 
+  }
+
+  //9. Para que cambie las clases; cuando paint va a pintar primero pregunta si es un favorito y entonces le añade la clase o no (retrocede al punto 6)
+  paintCocktail();
+
+  //10. Esta es la función 
