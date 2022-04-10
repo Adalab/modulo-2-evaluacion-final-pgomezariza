@@ -7,6 +7,8 @@
 //05. Almacenamiento local (Local Storage)
 
 
+ //**.  Obtenermos lo que hay en el Local Storage
+ const listCocktailStorage = JSON.parse(localStorage.getItem('listCocktailStorage'));
 
 //1. Llevo a JS el ul para pintar los cocktails y lista 
 const cocktailList = document.querySelector(".js-cocktailList");
@@ -18,28 +20,29 @@ const inputSearch = document. querySelector(".js-input");
 //3. Necesito salvar/guardar los cocktails. Pero las tengo que guardar en una variable ("cockList = data.drinks ") para acceder en todo mi código. Va a estar vacio en inicio y tendrá valor cuando yo haga FETCH.
 let cockList = [];
 
-//4. Creo una función (función manejadora) que escuche al input y lo filtre en FETCH
-function handleKeyupInput(event) {
+//4. Creo una función (función manejadora) que escuche al input y lo FILTRE en FETCH
+function handleInput(event){
   event.preventDefault();
+  const searchDrinks = inputSearch.value.toLowerCase();
   callFetch(searchDrinks);
 }
-inputSearch.addEventListener('keyup',handleKeyupInput);
+inputSearch.addEventListener('keyup', handleInput);
 
 //5. Obtener los datos del servidor con fetch (creando la función callFetch) y que los pinte (aun no me lo puede pintar xq me falta la función para pintar el cocktail)
 function callFetch(searchDrinks) {
-  fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${searchDrinks}")
-  .then(response => response.json())
-  .then(data => {
-  cockList = data.drinks;
-  paintCocktail();
-  });
+    fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${searchDrinks}`)
+    .then(response => response.json())
+    .then(data => {
+    cockList = data.drinks;
+    paintCocktail();
+    });
 }
 
 //6. Tengo que crear la función para pintar/renderizar el cocktail q me refería en el punto 5, una vez que he obtenido los datos
 function paintCocktail() {
   let html = '';
   for (const drink of cockList) {
-    let classFavorite = ""; 
+    let classFavorite = ''; 
     //1º miro si es favorita o no, antes de pintar
     const favoriteFoundIndex = favorites.findIndex((fav) => { 
       return fav.idDrink === drink.idDrink;
@@ -48,7 +51,7 @@ function paintCocktail() {
     classFavorite = "cocktail--favorite";
   }
   else {
-    classFavorite = "";
+    classFavorite = '';
   }
   //Ahora creo todo el código html
   //classFavorite -> añade la clase de favorito en caso de que corresponda
@@ -61,15 +64,15 @@ function paintCocktail() {
 cocktailList.innerHTML = html;
 //Después de modificar el html escucho de nuevo los eventos 
 listenerCocktails();
-paintFavorites(); //tengo la funcion unas lineas mas abajo en el punto 10 en la funcion que pinta en favoritos segun el array
+paintFavorites(); 
 }
 
 
 //7. Escuchar cuando se clica en el cocktail
-function listenerCocktails () {
-  const liDrink = document.querySelector ('.js-drink');
-  for (const drink of liDrink) {
-    drink.addEventListener('click', handleClickCocktail);
+function listenerCocktails() {
+  const liCocktail = document.querySelectorAll('.js-drink');
+  for (const drink of liCocktail) {
+    drink.addEventListener('click', handleClicCocktail);
   }
 }
 
@@ -103,27 +106,29 @@ function handleClicCocktail(event) {
     //eliminar de la lista de favoritos
     favorites.splice(favoriteFoundIndex,1); 
   }
-
   //9. Para que cambie las clases; cuando paint va a pintar primero pregunta si es un favorito y entonces le añade la clase o no (retrocede al punto 6)
   paintCocktail();
-
+}
+  
   //10. Esta es la funcion que pinta en favoritos segun el array
   function paintFavorites() {
     let html = '';
     for (const drink of favorites) {
-      let let classFavorite = ""; 
+      let classFavorite = ''; 
       const favoriteFoundIndex = favorites.findIndex((fav) => { 
         return fav.idDrink === drink.idDrink;
     });
     if(favoriteFoundIndex !== -1){
       classFavorite = "cocktail--favorite";
     } else {
-      classFavorite = "";
+      classFavorite = '';
     }
     html += `<li class=" drink js-favDrink ${classFavorite}>" id=${drink.idDrink}>`;
     html += `<h3 class="favNameDrink js-favNameDrink"> ${drink.strDrink}</h3>`;
     html += `<img class="imgDrink js-imgDrink js-favImgDrink" src="${drink.strDrinkThumb}" alt="Cocktail" />`;
-    html += `</li>`
+    html += `</li>`;
     }
-    favCocktailList.innerHTML = html;
+    favList.innerHTML = html;
   }
+
+ 
