@@ -1,5 +1,4 @@
 .main {
-  height: 100vh;
   margin-bottom: 16px;
   padding: 16px;
   background-color: $colorSilver;
@@ -21,9 +20,11 @@
   align-items: center;
 }
 .input {
-  width: 350px;
+  width: 300px;
   display: flex;
   justify-content: center;
+  text-align: center;
+  font-size: 16px;
 }
 .searchBtn,
 .resetBtn {
@@ -39,13 +40,13 @@
 }
 
 .section2 {
-  max-height: auto;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   margin-top: 16px;
   border: solid 1px $colorDarkGreenBlue;
   border-radius: 10px;
+  padding: 10px 10px;
 }
 
 .imgDrink,
@@ -56,10 +57,17 @@
   flex-direction: row;
 }
 
+@media all and (min-width: 1200px) {
+  .favsCockt,
+  .cocktailList {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
 .footer {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-bottom: 20px;
   color: $colorDarkGreenBlue;
 }
