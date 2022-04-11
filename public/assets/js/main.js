@@ -36,8 +36,9 @@ function callFetch(searchDrinks) {
     });
 }
 
-//** Nueva función para el relleno de imagen en caso de que en la API me falte alguna
 
+
+//** Nueva función para el relleno de imagen en caso de que en la API me falte alguna
 function drinkThumbPlaceholder(){
   for (const drink of cockList) {
     if(drink.strDrinkThumb === ''){
@@ -45,6 +46,9 @@ function drinkThumbPlaceholder(){
     }
   }
 }
+
+
+
 
 //f. Tengo que crear la función para pintar/renderizar el cocktail q me refería en el punto 5, una vez que he obtenido los datos
 function paintCocktail() {
