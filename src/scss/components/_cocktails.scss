@@ -49,20 +49,29 @@
   padding: 10px 10px;
 }
 
+.favsCockt,
+.list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.drink {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 15px;
+  font-size: 14px;
+  color: $colorDirtyBlue;
+}
+
 .imgDrink,
 .js-imgDrink,
 .js-favImgDrink {
   width: 100px;
-  display: flex;
-  flex-direction: row;
+  padding-top: 5px;
 }
 
-@media all and (min-width: 1200px) {
-  .favsCockt,
-  .cocktailList {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-}
 .footer {
   display: flex;
   flex-direction: column;
