@@ -1,5 +1,1 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box}.main{margin-bottom:16px;padding:16px;background-color:#bfcdd0;color:#114e4e}.section1{display:flex;flex-direction:column;align-items:center;border:solid 1px #114e4e;border-radius:10px;padding:10px 10px}.form{display:flex;flex-direction:column;justify-content:center;align-items:center}.input{width:300px;display:flex;justify-content:center;text-align:center;font-size:16px}.searchBtn,.resetBtn{width:100px;height:30px;margin-top:5px;text-transform:uppercase;border-radius:10px;background-color:#438792;color:#fff;font-size:16px;font-weight:600}.section2{display:flex;flex-direction:row;justify-content:space-around;margin-top:16px;border:solid 1px #114e4e;border-radius:10px;padding:10px 10px}.favTitle,.listTitle{font-size:22px}.favsCockt,.list{display:flex;flex-direction:column;align-items:center}.drink{display:flex;flex-direction:column;align-items:center;text-align:center;margin:15px;font-size:14px;color:#438792}.imgDrink,.js-imgDrink,.js-favImgDrink{width:100px;padding-top:5px}.footer{display:flex;flex-direction:column;justify-content:center;align-items:center;padding-bottom:20px;color:#114e4e}
