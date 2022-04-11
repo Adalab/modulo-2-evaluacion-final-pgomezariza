@@ -11,7 +11,7 @@ const searchBtn = document.querySelector(".js-searchBtn");
 //* Necesito salvar/guardar los cocktails. Pero las tengo que guardar en una variable ("cockList = data.drinks ") para acceder en todo mi código. Va a estar vacio en inicio y tendrá valor cuando yo haga FETCH.
 let cockList = [];
 
-//* Creo una función (función manejadora) que escuche al input y lo FILTRE en FETCH
+//* Creo una función que escuche al input y lo FILTRE en FETCH
 function handleInput(event){
   event.preventDefault();
   const searchDrinks = inputSearch.value.toLowerCase();
@@ -63,7 +63,7 @@ function paintCocktail() {
   //classFavorite -> añade la clase de favorito en caso de que corresponda
   html += `<li class="drink js-drink ${classFavorite}>" id=${drink.idDrink}>`;
   html += `<h3 class="nameDrink js-nameDrink"> ${drink.strDrink}</h3>`;
-  html += `<img width="500" class="imgDrink js-imgDrink" src="${drink.strDrinkThumb}" alt="Cocktail" />`;
+  html += `<img class="imgDrink js-imgDrink" src="${drink.strDrinkThumb}" alt="Cocktail" />`;
   html += `</li>`
   }
 
@@ -130,7 +130,7 @@ function handleClicCocktail(event) {
     }
     html += `<li class=" drink js-favDrink ${classFavorite}>" id=${drink.idDrink}>`;
     html += `<h3 class="favNameDrink js-favNameDrink"> ${drink.strDrink}</h3>`;
-    html += `<img width="500" class="imgDrink js-imgDrink js-favImgDrink" src="${drink.strDrinkThumb}" alt="Cocktail" />`;
+    html += `<img class="imgDrink js-imgDrink js-favImgDrink" src="${drink.strDrinkThumb}" alt="Cocktail" />`;
     html += `</li>`;
     }
     favList.innerHTML = html;

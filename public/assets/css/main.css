@@ -4,6 +4,7 @@
   box-sizing: border-box; }
 
 .main {
+  height: 100vh;
   margin-bottom: 16px;
   padding: 16px;
   background-color: #bfcdd0;
@@ -12,15 +13,55 @@
 .section1 {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  border: solid 1px #114e4e;
+  border-radius: 10px;
+  padding: 10px 10px; }
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center; }
 
+.input {
+  width: 350px;
+  display: flex;
+  justify-content: center; }
+
+.searchBtn,
+.resetBtn {
+  width: 100px;
+  height: 30px;
+  margin-top: 5px;
+  text-transform: uppercase;
+  border-radius: 10px;
+  background-color: #438792;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600; }
+
 .section2 {
+  max-height: auto;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  margin-top: 16px; }
+  margin-top: 16px;
+  border: solid 1px #114e4e;
+  border-radius: 10px; }
 
-.favCocktail {
-  list-style: none; }
+.imgDrink,
+.js-imgDrink,
+.js-favImgDrink {
+  width: 100px;
+  display: flex;
+  flex-direction: row; }
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #114e4e; }
 
 /*# sourceMappingURL=main.css.map */
