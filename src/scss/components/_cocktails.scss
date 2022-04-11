@@ -49,6 +49,11 @@
   padding: 10px 10px;
 }
 
+.favTitle,
+.listTitle {
+  font-size: 22px;
+}
+
 .favsCockt,
 .list {
   display: flex;
@@ -60,6 +65,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
   margin: 15px;
   font-size: 14px;
   color: $colorDirtyBlue;

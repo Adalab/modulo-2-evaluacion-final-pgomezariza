@@ -8,7 +8,7 @@ const favList = document.querySelector(".js-favList")
 const inputSearch = document. querySelector(".js-input");
 const searchBtn = document.querySelector(".js-searchBtn");
 
-//* Necesito salvar/guardar los cocktails. Pero las tengo que guardar en una variable ("cockList = data.drinks ") para acceder en todo mi código. Va a estar vacio en inicio y tendrá valor cuando yo haga FETCH.
+//* Necesito salvar/guardar los cocktails. Los tengo que guardar en una variable para acceder en todo mi código. Va a estar vacio en inicio y tendrá valor cuando yo haga FETCH.
 let cockList = [];
 
 //* Creo una función que escuche al input y lo FILTRE en FETCH
@@ -25,7 +25,7 @@ function handleInput(event){
 
 searchBtn.addEventListener('click', handleInput);
 
-//* Obtener los datos del servidor con fetch (creando la función callFetch) y que los pinte (aun no me lo puede pintar xq me falta la función para pintar el cocktail)
+//* Obtener los datos del servidor con fetch y que los pinte 
 function callFetch(searchDrinks) {
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${searchDrinks}`)
     .then(response => response.json())
@@ -36,7 +36,7 @@ function callFetch(searchDrinks) {
     });
 }
 
-//** Nueva función para el relleno de imagen en caso de que en la API me falte alguna
+//** Nueva función para el relleno de imagen en caso de que la API no me devuelva alguna
 function drinkThumbPlaceholder(){
   for (const drink of cockList) {
     if(drink.strDrinkThumb === ''){
@@ -45,7 +45,7 @@ function drinkThumbPlaceholder(){
   }
 }
 
-//* Tengo que crear la función para pintar/renderizar el cocktail q me refería en el punto 5, una vez que he obtenido los datos
+//* Tengo que crear la función para pintar/renderizar el cocktail una vez que he obtenido los datos
 function paintCocktail() {
   let html = '';
   for (const drink of cockList) {
@@ -111,7 +111,7 @@ function handleClicCocktail(event) {
     //eliminar de la lista de favoritos
     favorites.splice(favoriteFoundIndex,1); 
   }
-  //i. Para que cambie las clases; cuando paint va a pintar primero pregunta si es un favorito y entonces le añade la clase o no 
+  //* Para que cambie las clases; cuando paint va a pintar primero pregunta si es un favorito y entonces le añade la clase o no 
   paintCocktail();
 }
   
@@ -139,7 +139,7 @@ function handleClicCocktail(event) {
  //**.  Obtenermos lo que hay en el Local Storage
  const listCocktailStorage = JSON.parse(localStorage.getItem('listCocktailStorage'));
 
- //* Para resetear toda la página 
+ //* Para resetear toda la columna de cócteles favoritos
  // Variables asociadas al botón reset
  const resetBtn = document.querySelector('.js-resetBtn');
 
